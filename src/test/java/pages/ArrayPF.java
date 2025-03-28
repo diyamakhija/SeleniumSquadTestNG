@@ -1,4 +1,4 @@
-package PageFactory;
+package pages;
 
 public class ArrayPF {
 

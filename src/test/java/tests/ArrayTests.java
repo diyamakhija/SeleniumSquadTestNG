@@ -2,10 +2,9 @@ package tests;
 
 import org.testng.annotations.Test;
 
-import base.BaseTest;
 
-public class ArrayTests extends BaseTest {
-	
+public class ArrayTests { 
+//	extends BaseTest {
 
 	    @Test(priority = 1)
 	    public void verifyUserCanNavigateToArrayPage() {
