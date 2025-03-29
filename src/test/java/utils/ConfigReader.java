@@ -12,7 +12,7 @@ public class ConfigReader {
 			propertyData.load(fis);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("❌ Failed to load config.properties");
+			throw new RuntimeException(" Failed to load config.properties");
 		}
 	}
 

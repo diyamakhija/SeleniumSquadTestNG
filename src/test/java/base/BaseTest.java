@@ -5,12 +5,15 @@ import org.testng.annotations.AfterMethod;
 import org.openqa.selenium.WebDriver;
 
 import pages.HomePage;
+import pages.RegistrationPage;
 import utils.ConfigReader;
 import utils.DriverManager;
 
 public class BaseTest {
     protected WebDriver driver; // Class level
     protected HomePage homePage; // Class level
+    protected RegistrationPage registrationPage; // ✅ Add this line
+
 
     @BeforeMethod
     public void setUp() {
@@ -19,6 +22,8 @@ public class BaseTest {
         driver.manage().window().maximize(); //  Ensure window is full screen
         driver.get(ConfigReader.getPageURL()); //  Automatically go to landing page
         homePage = new HomePage(driver); //  Initialize HomePage once
+        registrationPage = new RegistrationPage(driver); // ✅ Initialize here
+
     }
 
     @AfterMethod

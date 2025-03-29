@@ -1,8 +1,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="BasicSuite">
+ 
+  <!-- Commented out as HomePageTests might be missing or misnamed -->
+  <!--
   <test name="HomePageTestsExecution">
     <classes>
       <class name="tests.HomePageTests"/>
     </classes>
   </test>
+  -->
+
+  <test name="RegistrationTests">
+    <classes>
+      <class name="tests.RegistrationTests"/>
+    </classes>
+  </test>
+
 </suite>
