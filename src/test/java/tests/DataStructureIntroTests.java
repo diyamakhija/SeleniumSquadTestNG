@@ -1,39 +1,36 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.DataStructureIntroPF;
-import pages.LoginPF;
 
 public class DataStructureIntroTests extends BaseTest {
 
 	DataStructureIntroPF dataStructureIntroPF;
-	LoginPF loginPF;
 
-	@BeforeMethod
-	private void init() {
-		System.out.println("Coming to DataStructureIntroTests of init");
-		dataStructureIntroPF = new DataStructureIntroPF();
-		loginPF = new LoginPF();
-		loginPF.getStartedBtn();
-		loginPF.signInBtn();
-		loginPF.userNameField();
-		loginPF.passwordField();
-		loginPF.logInBtn();
+	@BeforeClass
+	public void initLogin() {
+		System.out.println("init first");
+		shouldRunLoginMethod = true;
 	}
 
-	@Test(priority = 2)
+	@BeforeMethod
+	public void initDataStructure() {
+		dataStructureIntroPF = new DataStructureIntroPF();
+	}
+	
+	@Test(priority = 1)
 	public void dataStructureIntro() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.DATA_STRUCTURES_INRO_URL,
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void timeComplexityPage() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
@@ -42,7 +39,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 3)
 	public void tryEditorPage() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
@@ -51,7 +48,7 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 4)
 	public void practiceQuestions() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
@@ -60,5 +57,6 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 
 	}
-
+	
+	
 }

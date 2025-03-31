@@ -19,11 +19,8 @@ public class BaseClass {
 
 	public BaseClass() {
 		
-		System.out.println("Coming to BaseClass of PF");
 		this.driver = DriverManager.getDriver(); // Initialize driver
 		PageFactory.initElements(driver, this);
-
-		// **Changed**: Using Duration for implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Implicit wait
 	}
 
