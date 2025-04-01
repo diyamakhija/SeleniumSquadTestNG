@@ -5,6 +5,11 @@
 			<class name="tests.HomePageTests" />
 		</classes>
 	</test> 
+	<test name="LoginTest">
+		<classes>
+			<class name="tests.ArrayTests" />
+		</classes>
+	</test>
 
 	<test name="RegistrationTests">
 		<classes>
@@ -15,6 +20,12 @@
 	<test name="DataStructureIntroTests">
 		<classes>
 			<class name="tests.DataStructureIntroTests" />
+		</classes>
+	</test>
+	
+	<test name="LoginTest">
+		<classes>
+			<class name="tests.LoginTest" />
 		</classes>
 	</test>
 
