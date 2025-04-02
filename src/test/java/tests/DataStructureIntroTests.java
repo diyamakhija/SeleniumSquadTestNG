@@ -4,9 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.DataStructureIntroPF;
+import utils.ExcelDataProvider;
 
 public class DataStructureIntroTests extends BaseTest {
 
@@ -14,15 +16,14 @@ public class DataStructureIntroTests extends BaseTest {
 
 	@BeforeClass
 	public void initLogin() {
-		System.out.println("init first");
 		shouldRunLoginMethod = true;
 	}
 
-	@BeforeMethod
-	public void initDataStructure() {
+	@BeforeMethod()
+	public void setUpTest() {
 		dataStructureIntroPF = new DataStructureIntroPF();
 	}
-	
+
 	@Test(priority = 1)
 	public void dataStructureIntro() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
@@ -48,7 +49,47 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@DataRow(1) // Fetch row 1
+	public void nameErrorPythonCode_Row2(String codeSnippet, String expectedmessage) {
+		System.out.println("Executing with code: " + codeSnippet);
+		dataStructureIntroPF.dataStrIntro_getStartedBtn();
+		dataStructureIntroPF.timeComplexityBtn();
+		dataStructureIntroPF.tryHereBtn();
+		dataStructureIntroPF.codeEditorInput(codeSnippet);
+		dataStructureIntroPF.runBtn();
+		String actulMessage = dataStructureIntroPF.handleAlert1();
+		System.out.println("expectedmessage" + expectedmessage);
+		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
+	}
+
+	@Test(priority = 5, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@DataRow(2) // Fetch row 2
+	public void syntaxErrorPythonCode_Row3(String codeSnippet, String expectedmessage) {
+		dataStructureIntroPF.dataStrIntro_getStartedBtn();
+		dataStructureIntroPF.timeComplexityBtn();
+		dataStructureIntroPF.tryHereBtn();
+		dataStructureIntroPF.codeEditorInput(codeSnippet);
+		dataStructureIntroPF.runBtn();
+		String actulMessage = dataStructureIntroPF.handleAlert1();
+		System.out.println("expectedmessage" + expectedmessage);
+		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
+	}
+
+	@Test(priority = 6, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@DataRow(0) // Fetch row 2
+	public void validPythonCode_Row3(String codeSnippet, String expectedmessage) {
+		dataStructureIntroPF.dataStrIntro_getStartedBtn();
+		dataStructureIntroPF.timeComplexityBtn();
+		dataStructureIntroPF.tryHereBtn();
+		dataStructureIntroPF.codeEditorInput(codeSnippet);
+		dataStructureIntroPF.runBtn();
+		String actulMessage = dataStructureIntroPF.output.getText();
+		System.out.println("expectedmessage" + expectedmessage);
+		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
+	}
+	
+	@Test(priority = 7)
 	public void practiceQuestions() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
@@ -57,6 +98,23 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 
 	}
-	
-	
+
+	@Test(priority = 8)
+	public void dropDown() {
+		dataStructureIntroPF.dropDownBtn();
+		dataStructureIntroPF.queueOption();
+		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.QUEUE_URL,
+				"User is not on the Dashboard Page");
+
+	}
+
+	@Test(priority = 9)
+	public void numpyNinja() {
+		dataStructureIntroPF.dataStrIntro_getStartedBtn();
+		dataStructureIntroPF.numpyNinjaBtn();
+		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.DS_ALGO_PORTAL_URL,
+				"User is not on the Dashboard Page");
+
+	}
+
 }

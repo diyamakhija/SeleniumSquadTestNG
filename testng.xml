@@ -23,6 +23,13 @@
 		</classes>
 	</test>
 	
+	<test name="QueueTests">
+		<classes>
+			<class name="tests.QueueTests" />
+		</classes>
+	</test>
+	
+	
 	<test name="LoginTest">
 		<classes>
 			<class name="tests.LoginTest" />

@@ -12,10 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait; // Ensure correct import fo
 import utils.DriverManager;
 import utils.LoggerLoad;
 
-
-
 public class BaseClass {
-	protected WebDriver driver;
+	protected  WebDriver driver;
 
 	public BaseClass() {
 		
@@ -43,7 +41,6 @@ public class BaseClass {
 			Alert alert = driver.switchTo().alert();
 			alertText = alert.getText();
 			alert.accept();
-
 			LoggerLoad.info("Alert accepted");
 
 		} catch (NoAlertPresentException e) {
@@ -55,13 +52,11 @@ public class BaseClass {
 
 		} catch (Exception e) {
 			// Some other error occurred
-
 			LoggerLoad.error("An error occurred: ");
 			e.getMessage(); // fail the test.
 
 		}
 		System.out.println("Alert accepted");
-		System.out.println("Alert text: " + alertText);
 		return alertText;
 
 	}
