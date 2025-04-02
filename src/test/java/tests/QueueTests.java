@@ -45,7 +45,7 @@ public class QueueTests extends BaseTest {
 		Assert.assertEquals(queuePF.getCurrentUrl(), UrlConstants.TRYEDITOR_URL, "User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class, retryAnalyzer = listeners.Retry.class)
 	@DataRow(3)
 	public void runWithoutCode(String expectedmessage) {
 		queuePF.queue_getStartedBtn();
@@ -110,7 +110,7 @@ public class QueueTests extends BaseTest {
 
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 10, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class, retryAnalyzer = listeners.Retry.class)
 	@DataRow(3)
 	public void runWithoutCode1(String expectedmessage) {
 		queuePF.queue_getStartedBtn();
@@ -180,7 +180,7 @@ public class QueueTests extends BaseTest {
 
 	}
 
-	@Test(priority = 16)
+	@Test(priority = 16, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class, retryAnalyzer = listeners.Retry.class)
 	@DataRow(3)
 	public void runWithoutCode2(String expectedmessage) {
 		queuePF.queue_getStartedBtn();
@@ -249,7 +249,7 @@ public class QueueTests extends BaseTest {
 
 	}
 
-	@Test(priority = 22)
+	@Test(priority = 22, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class, retryAnalyzer = listeners.Retry.class)
 	@DataRow(3)
 	public void runWithoutCode3(String expectedmessage) {
 		queuePF.queue_getStartedBtn();

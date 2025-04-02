@@ -1,10 +1,10 @@
 package tests;
 
 import org.testng.Assert;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import base.BaseTest;
 import constants.UrlConstants;
 import pages.DataStructureIntroPF;
@@ -49,7 +49,7 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4,retryAnalyzer = listeners.Retry.class,dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
 	@DataRow(3)
 	public void runWithoutCode(String expectedmessage) {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
