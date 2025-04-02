@@ -49,7 +49,18 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 4, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@Test(priority = 4)
+	@DataRow(3)
+	public void runWithoutCode(String expectedmessage) {
+		dataStructureIntroPF.dataStrIntro_getStartedBtn();
+		dataStructureIntroPF.timeComplexityBtn();
+		dataStructureIntroPF.tryHereBtn();
+		dataStructureIntroPF.runBtn();
+		String actulMessage = dataStructureIntroPF.handleAlert1();
+		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
+	}
+
+	@Test(priority = 5, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
 	@DataRow(1) // Fetch row 1
 	public void nameErrorPythonCode_Row2(String codeSnippet, String expectedmessage) {
 		System.out.println("Executing with code: " + codeSnippet);
@@ -63,7 +74,7 @@ public class DataStructureIntroTests extends BaseTest {
 		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
 	}
 
-	@Test(priority = 5, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@Test(priority = 6, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
 	@DataRow(2) // Fetch row 2
 	public void syntaxErrorPythonCode_Row3(String codeSnippet, String expectedmessage) {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
@@ -76,7 +87,7 @@ public class DataStructureIntroTests extends BaseTest {
 		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
 	}
 
-	@Test(priority = 6, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	@Test(priority = 7, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
 	@DataRow(0) // Fetch row 2
 	public void validPythonCode_Row3(String codeSnippet, String expectedmessage) {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
@@ -88,8 +99,8 @@ public class DataStructureIntroTests extends BaseTest {
 		System.out.println("expectedmessage" + expectedmessage);
 		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
 	}
-	
-	@Test(priority = 7)
+
+	@Test(priority = 8)
 	public void practiceQuestions() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
@@ -99,7 +110,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 9)
 	public void dropDown() {
 		dataStructureIntroPF.dropDownBtn();
 		dataStructureIntroPF.queueOption();
@@ -108,7 +119,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 10)
 	public void numpyNinja() {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.numpyNinjaBtn();
