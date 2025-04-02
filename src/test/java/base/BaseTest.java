@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
-import pages.LoginPF;
 import pages.LoginpagePF;
 import pages.RegistrationPage;
 import utils.ConfigReader;
@@ -14,7 +13,7 @@ import utils.DriverManager;
 import utils.ExcelReader;
 
 public class BaseTest {
-	LoginPF loginPF;
+	LoginpagePF loginpagePF;
 	protected WebDriver driver; // Class level
 	protected HomePage homePage; // Class level
 	protected RegistrationPage registrationPage; //  Add this line
@@ -33,10 +32,9 @@ public class BaseTest {
 	@BeforeMethod(dependsOnMethods = "setUp")
 	public void loginMethod() {
 		if (shouldRunLoginMethod) {
-			loginPF = new LoginPF();
-			loginPF.getStartedBtn();
-			loginPF.signInBtn();
-			loginPF.userCredentials();
+			loginpagePF = new LoginpagePF(driver);
+			loginpagePF.userCredentials();
+			
 		}
 	}
 
