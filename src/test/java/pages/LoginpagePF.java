@@ -25,6 +25,15 @@ public class LoginpagePF {
 	private By successMessage = By.xpath("//div[@class='alert alert-success']");
 	private By errorMessage = By.xpath("//div[@role='alert']");
 
+	public void userCredentials() {
+		driver.findElement(getStartedBtn).click();
+		driver.findElement(signInLink).click();
+		driver.findElement(usernameField).sendKeys("SeleniumSquad");
+		driver.findElement(passwordField).sendKeys("Squad2025#");
+		driver.findElement(loginSubmitBtn).click();
+
+	}
+
 //Actions for the Login Page
 	public void clickGetStarted() {
 		driver.findElement(getStartedBtn).click();
