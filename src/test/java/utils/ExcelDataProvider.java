@@ -4,8 +4,10 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
 
+import pages.LoginpagePF;
 import tests.DataRow;
 
 public class ExcelDataProvider {
@@ -18,7 +20,7 @@ public class ExcelDataProvider {
 		if (rowNum < 0 || rowNum >= data.size()) {
 			throw new IllegalArgumentException("Invalid row number: " + rowNum);
 		}
-
+		
 		Object[][] dataArray = new Object[1][data.get(rowNum).size()];
 		int i = 0;
 		for (Map.Entry<String, String> entry : data.get(rowNum).entrySet()) {
@@ -26,7 +28,6 @@ public class ExcelDataProvider {
 			i++;
 		}
 		return dataArray;
-
 	}
 
 	@DataProvider(name = "pythonCodeData")
@@ -38,6 +39,11 @@ public class ExcelDataProvider {
 		int rowNum = dataRow.value();
 		Object[][] data = getTestDataForRow("pythonCode", rowNum);
 		return data;
+
+	}
+	
+	public static Object[][] fetchLoginData(int rowNum) {		
+		return getTestDataForRow("userCredentials", rowNum);
 
 	}
 	

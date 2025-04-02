@@ -6,7 +6,6 @@
 	<artifactId>SeleniumSquadTestNG</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-
 	<dependencies>
 
 		<!--
@@ -124,7 +123,8 @@
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
-						<!--<suiteXmlFile>testngcrossbrowser.xml</suiteXmlFile> -->
+						<!--<suiteXmlFile>parallelTestng.xml</suiteXmlFile>-->
+						<!--<suiteXmlFile>crossBrowserTestng.xml</suiteXmlFile> -->
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

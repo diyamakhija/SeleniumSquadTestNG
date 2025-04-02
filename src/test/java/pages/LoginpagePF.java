@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import base.BaseTest;
+import utils.ExcelDataProvider;
 
 public class LoginpagePF {
 
@@ -24,6 +25,19 @@ public class LoginpagePF {
 	private By loginSubmitBtn = By.xpath("//div[@class='col-sm']/form/input[4]");
 	private By successMessage = By.xpath("//div[@class='alert alert-success']");
 	private By errorMessage = By.xpath("//div[@role='alert']");
+
+	public void userCredentials() {
+
+		driver.findElement(getStartedBtn).click();
+		driver.findElement(signInLink).click();
+		Object[][] data = ExcelDataProvider.fetchLoginData(2);
+		String username = (String) data[0][2];
+		driver.findElement(usernameField).sendKeys(username);
+		String password = (String) data[0][0];
+		driver.findElement(passwordField).sendKeys(password);
+		driver.findElement(loginSubmitBtn).click();
+
+	}
 
 //Actions for the Login Page
 	public void clickGetStarted() {

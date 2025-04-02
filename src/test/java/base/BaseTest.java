@@ -10,10 +10,12 @@ import pages.LoginpagePF;
 import pages.RegistrationPage;
 import utils.ConfigReader;
 import utils.DriverManager;
+import utils.ExcelDataProvider;
 import utils.ExcelReader;
 
 public class BaseTest {
 	LoginpagePF loginpagePF;
+	ExcelDataProvider excelDataProvider;
 	protected WebDriver driver; // Class level
 	protected HomePage homePage; // Class level
 	protected RegistrationPage registrationPage; //  Add this line
@@ -32,7 +34,8 @@ public class BaseTest {
 	@BeforeMethod(dependsOnMethods = "setUp")
 	public void loginMethod() {
 		if (shouldRunLoginMethod) {
-			loginWithValidCredentials();
+			loginpagePF = new LoginpagePF(driver);
+			loginpagePF.userCredentials();
 
 		}
 	}
