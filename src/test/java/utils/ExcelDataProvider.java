@@ -11,7 +11,7 @@ import tests.DataRow;
 public class ExcelDataProvider {
 
 	public static Object[][] getTestDataForRow(String sheetName, int rowNum) {
-		String filePath = "./src/test/resources/testData/excelData.xlsx"; // Update with actual path
+		String filePath = ConfigReader.getExcelFilePath(); // Update with actual path
 		List<Map<String, String>> data = ExcelReader.getData(filePath).get(sheetName);
 
 		// Ensure row number is valid
@@ -40,4 +40,6 @@ public class ExcelDataProvider {
 		return data;
 
 	}
+	
+
 }
