@@ -1,38 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="BasicSuite">
-	 <test name="HomePageTestsExecution">
-		<classes>
-			<class name="tests.HomePageTests" />
-		</classes>
-	</test> 
-	<test name="LoginTest">
-		<classes>
-			<class name="tests.ArrayTests" />
-		</classes>
-	</test>
+	<test name="PageTestsExecution">
+	<classes>
+		<class name="tests.RegistrationTests" />
+		<class name="tests.LoginTest" />
+		<class name="tests.ArrayTests" />
+		<class name="tests.DataStructureIntroTests" />
+		<class name="tests.QueueTests" />
 
-	<test name="RegistrationTests">
-		<classes>
-			<class name="tests.RegistrationTests" />
-		</classes>
-	</test>
-	
-	<test name="DataStructureIntroTests">
-		<classes>
-			<class name="tests.DataStructureIntroTests" />
-		</classes>
-	</test>
-	
-	<test name="QueueTests">
-		<classes>
-			<class name="tests.QueueTests" />
-		</classes>
-	</test>
-	
-	
-	<test name="LoginTest">
-		<classes>
-			<class name="tests.LoginTest" />
 		</classes>
 	</test>
 
