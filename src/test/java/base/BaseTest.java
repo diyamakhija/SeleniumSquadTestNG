@@ -32,9 +32,8 @@ public class BaseTest {
 	@BeforeMethod(dependsOnMethods = "setUp")
 	public void loginMethod() {
 		if (shouldRunLoginMethod) {
-			loginpagePF = new LoginpagePF(driver);
-			loginpagePF.userCredentials();
-			
+			loginWithValidCredentials();
+
 		}
 	}
 
