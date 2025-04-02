@@ -36,7 +36,6 @@ public class BaseTest {
 		if (shouldRunLoginMethod) {
 			loginpagePF = new LoginpagePF(driver);
 			loginpagePF.userCredentials();
-
 		}
 	}
 

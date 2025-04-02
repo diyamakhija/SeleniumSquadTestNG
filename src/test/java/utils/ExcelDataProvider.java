@@ -3,17 +3,13 @@ package utils;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
-
-import pages.LoginpagePF;
 import tests.DataRow;
 
 public class ExcelDataProvider {
 
 	public static Object[][] getTestDataForRow(String sheetName, int rowNum) {
-		String filePath = ConfigReader.getExcelFilePath(); // Update with actual path
+		String filePath = "./src/test/resources/testData/excelData.xlsx"; // Update with actual path
 		List<Map<String, String>> data = ExcelReader.getData(filePath).get(sheetName);
 
 		// Ensure row number is valid
@@ -47,5 +43,4 @@ public class ExcelDataProvider {
 
 	}
 	
-
 }
