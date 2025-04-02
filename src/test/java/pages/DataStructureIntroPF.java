@@ -45,11 +45,11 @@ public class DataStructureIntroPF extends BaseClass {
 	@FindBy(xpath = "//div[@class='bs-example']/nav/a")
 	public WebElement numpyNinjaBtn;
 
-	public void codeEditorInput() {
+	public void codeEditorInput(String codeSnippet) {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		webDriverWait.until(ExpectedConditions.visibilityOf(form));
 		form.click();
-		editorInput.sendKeys();
+		editorInput.sendKeys(codeSnippet);
 	}
 
 	public void dataStrIntro_getStartedBtn() {
@@ -75,6 +75,8 @@ public class DataStructureIntroPF extends BaseClass {
 
 	public void runBtn() {
 
+		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		webDriverWait.until(ExpectedConditions.visibilityOf(runBtn));
 		runBtn.click();
 	}
 
@@ -95,14 +97,16 @@ public class DataStructureIntroPF extends BaseClass {
 
 	public void numpyNinjaBtn() {
 
+		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		webDriverWait.until(ExpectedConditions.visibilityOf(numpyNinjaBtn));
 		numpyNinjaBtn.click();
 	}
 
 	public String handleAlert1() {
 
-		 String handleAlert1 = handleAlert();
-		 return handleAlert1;
-		  
+		String handleAlert1 = handleAlert();
+		return handleAlert1;
+
 	}
 
 }

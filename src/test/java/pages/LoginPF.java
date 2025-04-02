@@ -30,22 +30,12 @@ public class LoginPF extends BaseClass {
 		signInBtn.click();
 	}
 
-	public void userNameField() {
+	public void userCredentials() {
 
 		userNameField.sendKeys("SeleniumSquad");
-	}
-
-	public void passwordField() {
-
 		passwordField.sendKeys("Squad2025#");
-	}
-
-	public void logInBtn() {
-
 		logInBtn.click();
-	}
-
-	
+	}	
 	}
 
 
