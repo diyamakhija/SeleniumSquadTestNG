@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPF {
+public class LoginPF extends BaseClass{
 
 	@FindBy(xpath = "//div[@class='content']/a/button")
 	public WebElement getStartedBtn;
