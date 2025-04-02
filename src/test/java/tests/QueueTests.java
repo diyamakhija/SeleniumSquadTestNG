@@ -172,8 +172,7 @@ public class QueueTests extends BaseTest {
 	}
 
 	@Test(priority = 15)
-	@DataRow(3)
-	public void implementationUsingArrayTryEditorPage(String expectedmessage) {
+	public void implementationUsingArrayTryEditorPage() {
 		queuePF.queue_getStartedBtn();
 		queuePF.implementationUsingArray();
 		queuePF.tryHereBtn();
@@ -242,8 +241,7 @@ public class QueueTests extends BaseTest {
 	}
 
 	@Test(priority = 21)
-	@DataRow(3)
-	public void queueOperationsTryEditorPage(String expectedmessage) {
+	public void queueOperationsTryEditorPage() {
 		queuePF.queue_getStartedBtn();
 		queuePF.queueOperations();
 		queuePF.tryHereBtn();
