@@ -87,6 +87,8 @@ public class DataStructureIntroPF extends BaseClass {
 
 	public void dropDownBtn() {
 
+		WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		webDriverWait.until(ExpectedConditions.visibilityOf(dropDownBtn));
 		dropDownBtn.click();
 	}
 

@@ -1,7 +1,6 @@
 package tests;
 
 import org.testng.Assert;
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,6 +8,7 @@ import base.BaseTest;
 import constants.UrlConstants;
 import pages.DataStructureIntroPF;
 import utils.ExcelDataProvider;
+import utils.LoggerLoad;
 
 public class DataStructureIntroTests extends BaseTest {
 
@@ -26,6 +26,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	@Test(priority = 1)
 	public void dataStructureIntro() {
+		LoggerLoad.info("The user is in Data structure Introduction page");
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.DATA_STRUCTURES_INRO_URL,
 				"User is not on the Dashboard Page");
@@ -33,6 +34,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	@Test(priority = 2)
 	public void timeComplexityPage() {
+		LoggerLoad.info("The user is in TimeComplexity page");
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
 		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(),
@@ -42,6 +44,7 @@ public class DataStructureIntroTests extends BaseTest {
 
 	@Test(priority = 3)
 	public void tryEditorPage() {
+		LoggerLoad.info("The user is in Datastructure Introduction Try here page");
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
 		dataStructureIntroPF.tryHereBtn();
@@ -49,47 +52,21 @@ public class DataStructureIntroTests extends BaseTest {
 				"User is not on the Dashboard Page");
 	}
 
-	@Test(priority = 4,retryAnalyzer = listeners.Retry.class,dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
-	@DataRow(3)
-	public void runWithoutCode(String expectedmessage) {
-		dataStructureIntroPF.dataStrIntro_getStartedBtn();
-		dataStructureIntroPF.timeComplexityBtn();
-		dataStructureIntroPF.tryHereBtn();
-		dataStructureIntroPF.runBtn();
-		String actulMessage = dataStructureIntroPF.handleAlert1();
-		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
-	}
 
-	@Test(priority = 5, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
-	@DataRow(1) // Fetch row 1
-	public void nameErrorPythonCode_Row2(String codeSnippet, String expectedmessage) {
-		System.out.println("Executing with code: " + codeSnippet);
+	@Test(priority = 4, dataProvider = "invalidPythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	public void invalidPythonCode(String codeSnippet, String expectedmessage) {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
 		dataStructureIntroPF.tryHereBtn();
 		dataStructureIntroPF.codeEditorInput(codeSnippet);
 		dataStructureIntroPF.runBtn();
 		String actulMessage = dataStructureIntroPF.handleAlert1();
-		System.out.println("expectedmessage" + expectedmessage);
 		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
 	}
 
-	@Test(priority = 6, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
-	@DataRow(2) // Fetch row 2
-	public void syntaxErrorPythonCode_Row3(String codeSnippet, String expectedmessage) {
-		dataStructureIntroPF.dataStrIntro_getStartedBtn();
-		dataStructureIntroPF.timeComplexityBtn();
-		dataStructureIntroPF.tryHereBtn();
-		dataStructureIntroPF.codeEditorInput(codeSnippet);
-		dataStructureIntroPF.runBtn();
-		String actulMessage = dataStructureIntroPF.handleAlert1();
-		System.out.println("expectedmessage" + expectedmessage);
-		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
-	}
-
-	@Test(priority = 7, dataProvider = "pythonCodeData", dataProviderClass = ExcelDataProvider.class)
-	@DataRow(0) // Fetch row 2
-	public void validPythonCode_Row3(String codeSnippet, String expectedmessage) {
+	
+	@Test(priority = 5, dataProvider = "validPythonCodeData", dataProviderClass = ExcelDataProvider.class)
+	public void validPythonCode(String codeSnippet, String expectedmessage) {
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
 		dataStructureIntroPF.tryHereBtn();
@@ -100,8 +77,9 @@ public class DataStructureIntroTests extends BaseTest {
 		Assert.assertEquals(actulMessage, expectedmessage, "An unexpected error occurred:");
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 6)
 	public void practiceQuestions() {
+		LoggerLoad.info("The user is in practice question page");
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.timeComplexityBtn();
 		dataStructureIntroPF.practiceQuestionsBtn();
@@ -110,8 +88,9 @@ public class DataStructureIntroTests extends BaseTest {
 
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 7)
 	public void dropDown() {
+		LoggerLoad.info("The user is in Queue page");
 		dataStructureIntroPF.dropDownBtn();
 		dataStructureIntroPF.queueOption();
 		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.QUEUE_URL,
@@ -119,8 +98,9 @@ public class DataStructureIntroTests extends BaseTest {
 
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 8)
 	public void numpyNinja() {
+		LoggerLoad.info("The user is in Numpy Ninja page");
 		dataStructureIntroPF.dataStrIntro_getStartedBtn();
 		dataStructureIntroPF.numpyNinjaBtn();
 		Assert.assertEquals(dataStructureIntroPF.getCurrentUrl(), UrlConstants.DS_ALGO_PORTAL_URL,
