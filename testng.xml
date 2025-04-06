@@ -1,6 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="BasicSuite">
+  
 	<test name="PageTestsExecution">
+    
 	<classes>
 		<class name="tests.RegistrationTests" />
 		<class name="tests.LoginTest" />
@@ -8,8 +10,9 @@
 		<class name="tests.DataStructureIntroTests" />
 		<class name="tests.QueueTests" />
 		<class name="tests.TreeTests" />
-
-		</classes>
+		<class name="tests.StackTests" />
+ 	</classes>
+    
 	</test>
 
 </suite>
