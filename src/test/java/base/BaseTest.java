@@ -48,6 +48,7 @@ public class BaseTest {
 		DriverManager.quitDriver(); // Clean up
 		
 	}
+	
 	public void loginWithValidCredentials() {
 		// Load data from Excel
 		Map<String, List<Map<String, String>>> data =
