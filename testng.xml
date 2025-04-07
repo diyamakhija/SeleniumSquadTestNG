@@ -9,10 +9,11 @@
 		<class name="tests.ArrayTests" />
 		<class name="tests.DataStructureIntroTests" />
 		<class name="tests.QueueTests" />
+		<class name="tests.LinkedListTests" />
 		<class name="tests.TreeTests" />
 		<class name="tests.StackTests" />
  	</classes>
-    
+
 	</test>
 
 </suite>
