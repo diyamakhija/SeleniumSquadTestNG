@@ -1,10 +1,13 @@
 package base;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.AfterMethod;
 import java.util.List;
 import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
 import pages.HomePage;
 import pages.LoginpagePF;
 import pages.RegistrationPage;
@@ -21,9 +24,10 @@ public class BaseTest {
 	protected RegistrationPage registrationPage; //  Add this line
 	protected boolean shouldRunLoginMethod = false;
 
+	@Parameters("browser")
 	@BeforeMethod(alwaysRun = true)
-	public void setUp() {
-		DriverManager.createDriver(ConfigReader.getBrowser());
+	public void setUp(String browser) {
+		DriverManager.createDriver(browser);
 		driver = DriverManager.getDriver();
 		driver.manage().window().maximize(); // Ensure window is full screen
 		driver.get(ConfigReader.getPageURL()); // Automatically go to landing page
@@ -39,14 +43,15 @@ public class BaseTest {
 		}
 	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		DriverManager.quitDriver(); // Clean up
+		
 	}
 	public void loginWithValidCredentials() {
 		// Load data from Excel
 		Map<String, List<Map<String, String>>> data =
-				ExcelReader.getData("./src/test/resources/testData/excelData.xlsx");
+				ExcelReader.getData(ConfigReader.getExcelFilePath());
 		List<Map<String, String>> credentialsList = data.get("userCredentials");
 
 		// Find the row with a successful login message

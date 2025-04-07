@@ -1,12 +1,13 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import base.BaseTest;
 import utils.ExcelDataProvider;
 
 public class LoginpagePF {
@@ -28,7 +29,9 @@ public class LoginpagePF {
 
 	public void userCredentials() {
 
-		driver.findElement(getStartedBtn).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement getStartedBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='content']/a/button")));
+		getStartedBtn.click();
 		driver.findElement(signInLink).click();
 		Object[][] data = ExcelDataProvider.fetchLoginData(2);
 		String username = (String) data[0][2];

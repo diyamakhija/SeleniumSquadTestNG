@@ -25,7 +25,6 @@ public class DriverManager {
 				throw new IllegalArgumentException("Unsupported browser: " + browser);
 		}
 
-		webDriver.manage().window().maximize();  // Maximize browser after launch
 		driver.set(webDriver);
 	}
 
