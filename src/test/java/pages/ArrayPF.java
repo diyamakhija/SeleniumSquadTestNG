@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,15 +14,17 @@ import base.BaseTest;
 import java.time.Duration;
 import utils.ExcelReader;
 
-public class ArrayPF extends BaseTest {
+public class ArrayPF extends BaseClass{
 
-    ExcelReader excelReader = new ExcelReader();
-
+    WebDriver driver;
 
     public ArrayPF(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this); // This is the key line
+        // If you're using PageFactory:
+        // PageFactory.initElements(driver, this);
     }
+
+
 
     @FindBy(xpath = "//a[@href='array' and contains(@class, 'btn-primary')]")
     WebElement getStartedArrayButton;
@@ -55,8 +59,8 @@ public class ArrayPF extends BaseTest {
     @FindBy(xpath = "//a[text()='Search the array']")
     WebElement searchArrayLink;
 
-    @FindBy(xpath = "//textarea[@id='editor']")
-    WebElement codeEditor;
+    @FindBy(css = "div.CodeMirror div.CodeMirror-code")
+    private WebElement codeMirrorEditor;
 
     @FindBy(xpath = "//button[text()='Submit']")
     WebElement submitButton;
@@ -80,19 +84,13 @@ public class ArrayPF extends BaseTest {
     public void clickRunButton() {
         runButton.click();
     }
-//
-//    public String handleAlert1() {
-//        return handleAlert();
-//    }
-//
-//    public String nameHandleAlert() {
-//        return handleAlert();
-//    }
-//
-//    public String syntaxHandleAlert() {
-//        return handleAlert();
-//    }
+    
+	public String handleAlert1() {
 
+		String handleAlert1 = handleAlert();
+		return handleAlert1;
+
+	}
 
     public void clickArraysInPythonButton() {
         arraysInPythonButton.click();
@@ -121,9 +119,19 @@ public class ArrayPF extends BaseTest {
     public void clickSearchArrayLink() {
         searchArrayLink.click();
     }
-
     public void enterCodeInEditor(String code) {
-        codeEditor.sendKeys(code);
+        WebElement editorDiv = driver.findElement(By.cssSelector("div.CodeMirror"));
+
+        // Click to focus editor
+        editorDiv.click();
+
+        // Use JavaScript to send keys directly into the editor
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+            "arguments[0].CodeMirror.setValue(arguments[1]);",
+            editorDiv,
+            code
+        );
     }
 
     public void clickSubmitButton() {
