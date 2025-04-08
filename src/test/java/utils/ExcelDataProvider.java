@@ -41,8 +41,8 @@ public class ExcelDataProvider {
 		return new Object[][] {
 				// starting from index 1 since index 0 is valid usecase
 				{ sheet.get(1).get("pCode"), sheet.get(1).get("Result") },
-				{ sheet.get(2).get("pCode"), sheet.get(2).get("Result") },};
-				{ sheet.get(3).get(" "), sheet.get(3).get("Result") }, 
+				{ sheet.get(2).get("pCode"), sheet.get(2).get("Result") },
+				{ sheet.get(3).get(" "), sheet.get(3).get("Result") }, };
 	}
 
 	@DataProvider(name = "validPythonCodeData")
