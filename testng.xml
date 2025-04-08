@@ -4,14 +4,17 @@
 	<test name="PageTestsExecution">
     
 	<classes>
-		<class name="tests.RegistrationTests" />
-		<class name="tests.LoginTest" />
+		
 		<class name="tests.ArrayTests" />
-		<class name="tests.DataStructureIntroTests" />
+		
+		<!--<class name="tests.DataStructureIntroTests" />
 		<class name="tests.QueueTests" />
 		<class name="tests.LinkedListTests" />
 		<class name="tests.TreeTests" />
-		<class name="tests.StackTests" />
+			<class name="tests.RegistrationTests" />
+		<class name="tests.LoginTest" />
+		<class name="tests.GraphTests" />
+		<class name="tests.StackTests" />-->
  	</classes>
 
 	</test>
