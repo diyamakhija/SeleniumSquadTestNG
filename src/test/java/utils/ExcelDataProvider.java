@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.testng.annotations.DataProvider;
 
+import pages.LoginpagePF;
+
 public class ExcelDataProvider {
 
 	public static Object[][] getLoginDataForRow(String sheetName, int rowNum) {
@@ -61,5 +63,28 @@ public class ExcelDataProvider {
 		return getLoginDataForRow("userCredentials", rowNum);
 
 	}
+//	public void loginWithValidCredentials() {
+//		// Load data from Excel
+//		Map<String, List<Map<String, String>>> data =
+//				ExcelReader.getData(ConfigReader.getExcelFilePath());
+//		List<Map<String, String>> credentialsList = data.get("userCredentials");
+//
+//		// Find the row with a successful login message
+//		Map<String, String> validLogin = credentialsList.stream()
+//				.filter(row -> row.get("expectedmessage").equalsIgnoreCase("You are logged in"))
+//				.findFirst()
+//				.orElseThrow(() -> new RuntimeException("No valid login found in Excel"));
+//
+//		String username = validLogin.get("username").trim();
+//		String password = validLogin.get("password").trim();
+//
+//		// Perform login
+//		LoginpagePF loginPF = new LoginpagePF(driver);
+//		loginPF.clickGetStarted();
+//		loginPF.clickSignIn();
+//		loginPF.enterUsername(username);
+//		loginPF.enterPassword(password);
+//		loginPF.submitLogin();
+//	}
 	
 }
